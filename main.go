@@ -1,9 +1,8 @@
-
 package main
 
 import (
-    "flag"
-    "fmt"
+	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -14,16 +13,16 @@ import (
 )
 
 func main() {
-    flag.Usage = func() {
-        fmt.Printf("usage: %s <command> [<arg>..]\n", os.Args[0])
-        fmt.Println()
-        fmt.Println("Take all enviroment variables and expand \"secret:<name>\"")
-        fmt.Println("with the content of '/run/secrets/<name>' file. The path")
-        fmt.Println("may be overriden by setting $SECRETS_PATH.")
-        fmt.Println()
-        fmt.Println("Then it will executed <command> with <args>, in such environment.")
-    }
-    flag.Parse()
+	flag.Usage = func() {
+		fmt.Printf("usage: %s <command> [<arg>..]\n", os.Args[0])
+		fmt.Println()
+		fmt.Println("Take all enviroment variables and expand \"secret:<name>\"")
+		fmt.Println("with the content of '/run/secrets/<name>' file. The path")
+		fmt.Println("may be overriden by setting $SECRETS_PATH.")
+		fmt.Println()
+		fmt.Println("Then it will executed <command> with <args>, in such environment.")
+	}
+	flag.Parse()
 
 	if len(os.Args) < 2 {
 		log.Fatal("expecting command as an argument")
